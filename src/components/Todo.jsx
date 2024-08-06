@@ -29,6 +29,14 @@ const Todo = () => {
     setTodoItems((prev) => prev.filter((item) => item.Id !== id));
   };
 
+  const completeItem = (id) => {
+    setTodoItems((prev) =>
+      prev.map((item) =>
+        item.Id === id ? { ...item, isComplete: !item.isComplete } : item
+      )
+    );
+  };
+
   return (
     <div className='bg-rose-100 place-self-center w-11/12 max-w-md flex flex-col p- min-h-[600px] rounded-lg'>
       <div className='todo'>
@@ -68,6 +76,7 @@ const Todo = () => {
               Id={item.Id}
               isComplete={item.isComplete}
               onDelete={deleteItem} // Pass the delete function
+              onComplete={completeItem} // Pass the complete function
             />
           );
         })}
