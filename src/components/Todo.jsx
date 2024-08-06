@@ -1,13 +1,32 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import TodoItems from "./TodoItems";
 
 const Todo = () => {
+  const [todoItems, setTodoItems] = useState([]);
+
   // Adding tasks using the input Bar
   const inputRef = useRef();
 
   const add = () => {
     const task = inputRef.current.value.trim();
-    console.log(task);
+
+    if (task === "") {
+      alert("Please enter a task");
+      return; // Added return to prevent further execution if task is empty
+    }
+
+    const newTodo = {
+      Id: Date.now(),
+      text: task,
+      isComplete: false,
+    };
+
+    setTodoItems((prev) => [...prev, newTodo]);
+    inputRef.current.value = "";
+  };
+
+  const deleteItem = (id) => {
+    setTodoItems((prev) => prev.filter((item) => item.Id !== id));
   };
 
   return (
@@ -41,8 +60,17 @@ const Todo = () => {
       </div>
 
       <div>
-        <TodoItems Text='Drink 1 litre of Water' />
-        <TodoItems Text='Drink 1 litre of Water before 7PM' />
+        {todoItems.map((item) => {
+          return (
+            <TodoItems
+              key={item.Id}
+              text={item.text}
+              Id={item.Id}
+              isComplete={item.isComplete}
+              onDelete={deleteItem} // Pass the delete function
+            />
+          );
+        })}
       </div>
     </div>
   );
