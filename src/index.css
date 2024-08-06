@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.todo {
+  background-color: #6b21a8; /* Purple background */
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 8px; /* Adjust the value as needed */
+  border-top-right-radius: 8px; /* Adjust the value as needed */
+}
+
+.todo .to {
+  color: white;
+  font-size: 50px;
+}
+
+.todo .do {
+  color: pink;
+  font-size: 50px;
+}
+
+.todo .do i {
+  margin-left: -5px;
+}
+
+.groups {
+  background-color: pink;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.groups > div {
+  margin: 13px 80px; /* Adjust the spacing between divs if needed */
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px; /* Space for the underline */
+  cursor: pointer; /* Change cursor to pointer for click effect */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6b21a8;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 20px auto 0; /* Center horizontally */
+  width: 400px; /* Set a specific width */
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  width: 100%; /* Ensure input takes full width of the parent */
+}
+
+.input::placeholder {
+  color: white;
+  opacity: 0.6;
+}
+
+.bx-plus {
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 8px;
+}
+
+.bx-plus:hover {
+  color: #ddd;
+}

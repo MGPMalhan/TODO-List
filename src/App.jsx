@@ -1,9 +1,11 @@
 import React from "react";
+import "./index.css"; // Ensure this path is correct
+import Todo from "./components/Todo";
 
 const App = () => {
   return (
-    <div>
-      <h1>Pamuditha</h1>
+    <div className='bg-black grid  min-h-screen'>
+      <Todo />
     </div>
   );
 };
