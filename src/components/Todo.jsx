@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import TodoItems from "./TodoItems";
 
 const Todo = () => {
+  // Adding tasks using the input Bar
+  const inputRef = useRef();
+
+  const add = () => {
+    const task = inputRef.current.value.trim();
+    console.log(task);
+  };
+
   return (
     <div className='bg-rose-100 place-self-center w-11/12 max-w-md flex flex-col p- min-h-[600px] rounded-lg'>
       <div className='todo'>
@@ -23,12 +31,18 @@ const Todo = () => {
         </div>
       </div>
       <div className='input-box'>
-        <input type='text' placeholder='Add new task' className='input' />
-        <i className='bx bx-plus'></i>
+        <input
+          ref={inputRef}
+          type='text'
+          placeholder='Add new task'
+          className='input'
+        />
+        <i onClick={add} className='bx bx-plus'></i>
       </div>
 
       <div>
-        <TodoItems />
+        <TodoItems Text='Drink 1 litre of Water' />
+        <TodoItems Text='Drink 1 litre of Water before 7PM' />
       </div>
     </div>
   );
